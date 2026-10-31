@@ -1,0 +1,15 @@
+{
+  "folders": [
+    {
+      "name": "Brand Visibility",
+      "path": "brand_visibility"
+    },
+    {
+      "name": "BrickView \u2014 Real Estate",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "python.defaultInterpreterPath": "/Users/sandy/Documents/ChatGPT/GUVI-V1/.venv/bin/python"
+  }
+}
