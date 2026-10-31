@@ -1,0 +1,14 @@
+{
+  "projects": [
+    {
+      "name": "BrickView — Real Estate",
+      "folder": "brickview",
+      "run_from_repository_root": "python -m streamlit run brickview/app.py --server.port 8501"
+    },
+    {
+      "name": "Brand Visibility",
+      "folder": "brand_visibility",
+      "run_from_repository_root": "python -m streamlit run brand_visibility/app.py --server.port 8502"
+    }
+  ]
+}

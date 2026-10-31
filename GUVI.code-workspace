@@ -1,15 +1,15 @@
 {
   "folders": [
     {
-      "name": "Brand Visibility",
-      "path": "brand_visibility"
+      "name": "BrickView — Real Estate",
+      "path": "brickview"
     },
     {
-      "name": "BrickView \u2014 Real Estate",
-      "path": "."
+      "name": "Brand Visibility",
+      "path": "brand_visibility"
     }
   ],
   "settings": {
-    "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python"
+    "python.defaultInterpreterPath": "${workspaceFolder:BrickView — Real Estate}/../.venv/bin/python"
   }
 }

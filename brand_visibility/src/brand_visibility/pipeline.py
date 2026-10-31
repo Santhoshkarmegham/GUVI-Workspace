@@ -9,8 +9,8 @@ import urllib.parse
 import urllib.request
 import pandas as pd
 
-ROOT = Path(__file__).resolve().parent
-DB = ROOT / 'outputs/brands.db'
+ROOT = Path(__file__).resolve().parents[2]
+DB = ROOT / 'data/brands.db'
 BRANDS = ['Samsung', 'Apple', 'Philips', 'Dell', 'HP', 'Boat', 'Puma', 'Nike', 'Sony', 'Lenovo', 'Asus', 'LG', 'OnePlus', 'Xiaomi', 'Adidas']
 
 def numeric(s):
@@ -56,16 +56,16 @@ def clean(raw):
     return d, audit
 
 def build():
-    frames = [pd.read_csv(ROOT / 'data/brand_dirty_dataset.csv')]
-    for file in sorted((ROOT/'data').glob('api_*.csv')):
+    frames = [pd.read_csv(ROOT / 'data/raw/brand_dirty_dataset.csv')]
+    for file in sorted((ROOT/'data/raw').glob('api_*.csv')):
         frames.append(pd.read_csv(file))
     data, audit = clean(pd.concat(frames, ignore_index=True))
     DB.parent.mkdir(exist_ok=True)
     with sqlite3.connect(DB) as con:
         data.to_sql('products', con, if_exists='replace', index=False)
         con.execute('CREATE INDEX IF NOT EXISTS filters ON products(brand, platform, keyword)')
-    data.to_csv(ROOT/'outputs/clean_products.csv', index=False)
-    (ROOT/'outputs/cleaning_audit.json').write_text(json.dumps(audit, indent=2))
+    data.to_csv(ROOT/'data/processed/clean_products.csv', index=False)
+    (ROOT/'reports/cleaning_audit.json').write_text(json.dumps(audit, indent=2))
     return audit
 
 def query(filters=None, search='', rating=(0.,5.), include_unrated=True, price=None):
@@ -101,7 +101,7 @@ def fetch(keyword):
         if r.get('price') and not re.search(r'₹|INR', r['price'], re.I): continue
         rows.append(dict(keyword=keyword, title=r.get('title'), price=r.get('extracted_price'), raw_price=r.get('extracted_old_price'), rating=r.get('rating'), reviews=r.get('reviews'), platform=r.get('source'), delivery=r.get('delivery'), position=r.get('position'), source='SerpAPI · India', snapshot=stamp))
     if not rows: raise RuntimeError('No eligible INR, non-installment shopping results returned.')
-    output = ROOT/'data'/('api_' + pd.Timestamp.now(tz='UTC').strftime('%Y%m%d_%H%M%S_%f') + '.csv')
+    output = ROOT/'data/raw'/('api_' + pd.Timestamp.now(tz='UTC').strftime('%Y%m%d_%H%M%S_%f') + '.csv')
     pd.DataFrame(rows).to_csv(output, index=False)
     return len(rows)
 
