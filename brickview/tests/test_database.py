@@ -1,6 +1,9 @@
+from pathlib import Path
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'src'))
 import unittest
-from database import initialize, connect
-from queries import QUERIES
+from brickview.database import initialize, connect
+from brickview.queries import QUERIES
 
 class DatabaseChecks(unittest.TestCase):
     @classmethod
@@ -29,6 +32,8 @@ class DatabaseChecks(unittest.TestCase):
 
 
 class AllTableCrudChecks(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls): initialize()
     def test_all_required_tables(self):
         con = connect()
         try:

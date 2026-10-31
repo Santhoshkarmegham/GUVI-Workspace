@@ -2,8 +2,8 @@ import sys
 from pathlib import Path
 import unittest
 import pandas as pd
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from pipeline import clean, build, query
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'src'))
+from brand_visibility.pipeline import clean, build, query
 from streamlit.testing.v1 import AppTest
 
 class ProjectTests(unittest.TestCase):

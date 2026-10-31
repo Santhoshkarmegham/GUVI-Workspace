@@ -1,9 +1,12 @@
+from pathlib import Path
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parent / 'src'))
 import sqlite3
 import pandas as pd
 import altair as alt
 import streamlit as st
-from database import initialize, connect, TABLES
-from queries import QUERIES
+from brickview.database import initialize, connect, TABLES
+from brickview.queries import QUERIES
 
 st.set_page_config(page_title='BrickView', page_icon='🏠', layout='wide')
 initialize()
@@ -136,7 +139,7 @@ elif page == 'India housing':
     show(read('SELECT * FROM india_housing'+where, args))
     st.caption('Table is paginated; download includes all matching rows.')
 else:
-    st.markdown('''- Sources are copied into `data/`; the database is built once on first run.
+    st.markdown('''- Sources are copied into `data/raw/`; the database is built once on first run.
 - Original field names are standardized to lowercase; Sqft → area_sqft, Date_Listed → listed_date, Date_Sold → sale_date.
 - Sales have no source Sale_ID. Their unique Listing_ID becomes sale_id, matching buyers.sale_id.
 - Multiple buyer records can refer to one sale. Buyer queries count buyer records; sales queries count sales.

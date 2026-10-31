@@ -1,11 +1,11 @@
 from pathlib import Path
 import json
 import sys
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent / 'src'))
 import altair as alt
 import pandas as pd
 import streamlit as st
-from pipeline import ROOT, DB, build, query
+from brand_visibility.pipeline import ROOT, DB, build, query
 
 st.set_page_config(page_title='BrandScope | Visibility Intelligence', page_icon='◈', layout='wide')
 st.markdown('''<style>
@@ -109,10 +109,10 @@ elif page == 'Product Explorer':
     st.json(d.loc[selected].where(d.loc[selected].notna(),None).to_dict())
     chart(d[['price','rating','brand']],'price','rating','Price and customer satisfaction','scatter','brand')
 else:
-    audit = json.loads((ROOT/'outputs/cleaning_audit.json').read_text())
+    audit = json.loads((ROOT/'reports/cleaning_audit.json').read_text())
     st.subheader('Cleaning audit · full dataset')
     st.json(audit)
     st.markdown('''Missing or invalid prices, ratings and reviews remain unknown and are excluded only from that metric’s mean. Listings are retained. Delivery gaps become **Unknown**. Platform case and title punctuation are standardized. Duplicates use keyword, title, platform, price, source, snapshot and position. Price outliers are flagged using keyword-level 1.5×IQR and retained. Brand extraction uses a documented dictionary; unmatched titles become Unknown.
 
 The provided CSV has no original prices, observation dates or search positions. Discounts and visibility remain unavailable unless observed through API records. API snapshots are separate listing observations; filter by source when comparing coverage. Cross-keyword pricing mixes product categories and should be interpreted carefully.''')
-    st.download_button('Download cleaned dataset',(ROOT/'outputs/clean_products.csv').read_bytes(),'clean_products.csv','text/csv')
+    st.download_button('Download cleaned dataset',(ROOT/'data/processed/clean_products.csv').read_bytes(),'clean_products.csv','text/csv')
