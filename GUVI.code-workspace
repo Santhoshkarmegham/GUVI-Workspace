@@ -11,6 +11,10 @@
     {
       "name": "Real Estate Investment Advisor",
       "path": "real_estate_investment_advisor"
+    },
+    {
+      "name": "RecycleVision",
+      "path": "recyclevision"
     }
   ],
   "settings": {
