@@ -1,0 +1,27 @@
+{
+  "project": "Audible Insights: Intelligent Book Recommendations",
+  "branch": "audible-insights",
+  "status": "Catalogue exploration and content, cluster and hybrid recommendations implemented",
+  "run_from_repository_root": [
+    "source .venv/bin/activate",
+    "cd audible_insights",
+    "python -m streamlit run app.py --server.port 8505"
+  ],
+  "folders": {
+    "data/raw": "Original supplied CSVs",
+    "data/processed": "Merged and cleaned catalogue",
+    "src/audible_insights": "Configuration, cleaning and recommendation logic",
+    "scripts": "Reproducible preparation entry point",
+    "tests": "Cleaning, recommendation and interface checks",
+    "reports": "Data quality audit and project details"
+  },
+  "limitations": [
+    "No user-item interactions: collaborative filtering and user-relevance precision/recall are not measurable.",
+    "No publication dates: publication-year trends are unavailable.",
+    "Prices have no declared currency.",
+    "Different editions with the same normalized title and author may be combined.",
+    "Source observation dates are unknown; advanced values take precedence when both exist.",
+    "Models are rebuilt in Streamlit resource cache, not saved as trained binary artifacts.",
+    "AWS deployment has not been performed."
+  ]
+}
