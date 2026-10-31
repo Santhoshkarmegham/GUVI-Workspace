@@ -5,7 +5,7 @@ A beginner-friendly Streamlit app with a local SQLite database. No API keys or d
 ## Run on macOS / Linux
 
 ```bash
-cd /Users/sandy/Documents/ChatGPT/GUVI-V1
+cd <your-repository-folder>
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt

@@ -5,11 +5,15 @@
       "path": "brand_visibility"
     },
     {
-      "name": "BrickView \u2014 Real Estate",
+      "name": "BrickView — Real Estate",
       "path": "."
+    },
+    {
+      "name": "Real Estate Investment Advisor",
+      "path": "real_estate_investment_advisor"
     }
   ],
   "settings": {
-    "python.defaultInterpreterPath": "/Users/sandy/Documents/ChatGPT/GUVI-V1/.venv/bin/python"
+    "python.defaultInterpreterPath": "${workspaceFolder:BrickView — Real Estate}/.venv/bin/python"
   }
 }

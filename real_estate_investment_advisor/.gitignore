@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.env
+.streamlit/secrets.toml
+mlruns/
+mlartifacts/
+*.db
+models/*
+!models/README.md
+data/processed/*
+!data/processed/README.md
