@@ -11,6 +11,14 @@
     {
       "name": "Real Estate Investment Advisor",
       "path": "real_estate_investment_advisor"
+    },
+    {
+      "name": "RecycleVision",
+      "path": "recyclevision"
+    },
+    {
+      "name": "Audible Insights",
+      "path": "audible_insights"
     }
   ],
   "settings": {
