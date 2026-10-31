@@ -1,11 +1,11 @@
-"""Small, repeatable data import. Run: python database.py."""
+"""Small, repeatable data import. Run: python scripts/initialize_database.py."""
 import csv
 import json
 import sqlite3
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent
-DB = ROOT / 'brickview.db'
+ROOT = Path(__file__).resolve().parents[2]
+DB = ROOT / 'data' / 'brickview.db'
 TABLES = ['agents', 'listings', 'property_attributes', 'sales', 'buyers', 'india_housing']
 
 def connect():
@@ -19,9 +19,9 @@ def initialize():
     import pandas as pd
     con = connect()
     try:
-        con.executescript((ROOT / 'schema.sql').read_text())
+        con.executescript((ROOT / 'sql/schema.sql').read_text())
         for table, filename in [('agents','agents_cleaned.json'), ('listings','listings_final_expanded.json'), ('property_attributes','property_attributes_final_expanded.json'), ('sales','sales_cleaned.csv'), ('buyers','buyers_cleaned.json')]:
-            path = ROOT / 'data' / filename
+            path = ROOT / 'data/raw' / filename
             rows = json.loads(path.read_text()) if path.suffix == '.json' else list(csv.DictReader(path.open()))
             aliases = {'sqft':'area_sqft', 'date_listed':'listed_date', 'date_sold':'sale_date', 'days_on_market':'days_on_market'}
             rows = [{aliases.get(k.lower(), k.lower()): v for k,v in row.items()} for row in rows]
@@ -31,7 +31,7 @@ def initialize():
             cols = list(rows[0])
             con.executemany(f'INSERT INTO {table} ({",".join(cols)}) VALUES ({",".join("?" for _ in cols)})', [[r[c] for c in cols] for r in rows])
         con.commit()
-        for chunk in pd.read_csv(ROOT / 'data/india_housing_prices.csv', chunksize=25000):
+        for chunk in pd.read_csv(ROOT / 'data/raw/india_housing_prices.csv', chunksize=25000):
             chunk.columns = chunk.columns.str.lower()
             chunk.to_sql('india_housing', con, if_exists='append', index=False)
         con.execute('CREATE INDEX idx_india_city ON india_housing(city)')
