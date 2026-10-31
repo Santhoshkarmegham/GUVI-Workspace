@@ -1,0 +1,45 @@
+{
+  "input_rows": 1320,
+  "input_columns": 7,
+  "original_dtypes": {
+    "keyword": "str",
+    "title": "str",
+    "price": "str",
+    "rating": "float64",
+    "reviews": "str",
+    "platform": "str",
+    "delivery": "str"
+  },
+  "missing_percent_before": {
+    "keyword": 0.0,
+    "title": 0.0,
+    "price": 9.55,
+    "rating": 9.92,
+    "reviews": 0.0,
+    "platform": 0.0,
+    "delivery": 0.0
+  },
+  "duplicate_rows_removed": 94,
+  "clean_rows": 1226,
+  "missing_after": {
+    "keyword": 0,
+    "title": 0,
+    "price": 207,
+    "rating": 121,
+    "reviews": 20,
+    "platform": 0,
+    "delivery": 0,
+    "source": 0,
+    "snapshot": 0,
+    "raw_price": 1226,
+    "position": 1226,
+    "brand": 0,
+    "visibility_score": 1226,
+    "discount_pct": 1226,
+    "price_range": 0,
+    "price_outlier": 0
+  },
+  "outliers_flagged": 46,
+  "ranked_rows": 0,
+  "discount_known_rows": 0
+}

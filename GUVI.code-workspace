@@ -1,0 +1,19 @@
+{
+  "folders": [
+    {
+      "name": "Brand Visibility",
+      "path": "brand_visibility"
+    },
+    {
+      "name": "BrickView — Real Estate",
+      "path": "."
+    },
+    {
+      "name": "Real Estate Investment Advisor",
+      "path": "real_estate_investment_advisor"
+    }
+  ],
+  "settings": {
+    "python.defaultInterpreterPath": "${workspaceFolder:BrickView — Real Estate}/.venv/bin/python"
+  }
+}
