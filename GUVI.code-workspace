@@ -15,6 +15,10 @@
     {
       "name": "RecycleVision",
       "path": "recyclevision"
+    },
+    {
+      "name": "Audible Insights",
+      "path": "audible_insights"
     }
   ],
   "settings": {

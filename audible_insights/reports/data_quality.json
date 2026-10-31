@@ -1,0 +1,36 @@
+{
+  "sources": {
+    "Basic": {
+      "input_rows": 6368,
+      "duplicate_keys_collapsed": 966
+    },
+    "Advanced": {
+      "input_rows": 4464,
+      "duplicate_keys_collapsed": 453
+    }
+  },
+  "merged_books": 6063,
+  "overlapping_books": 3350,
+  "missing_values": {
+    "key": 0,
+    "title": 0,
+    "author": 0,
+    "rating": 580,
+    "reviews": 580,
+    "price": 104,
+    "description": 0,
+    "listening_time": 0,
+    "ranks_and_genre": 0,
+    "source": 0,
+    "genres": 0,
+    "book_id": 0,
+    "duration_minutes": 4019
+  },
+  "rules": [
+    "Identity is normalized title plus author; editions may be combined.",
+    "Advanced fields take precedence; basic fills missing values. Source dates are unknown.",
+    "Invalid ratings and non-positive prices remain unknown.",
+    "Currency is unspecified in supplied files.",
+    "No user interactions or publication dates are provided."
+  ]
+}
