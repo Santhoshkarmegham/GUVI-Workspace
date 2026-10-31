@@ -1,0 +1,24 @@
+{
+  "projects": [
+    {
+      "name": "BrickView — Real Estate",
+      "folder": "brickview",
+      "run_from_repository_root": "python -m streamlit run brickview/app.py --server.port 8501"
+    },
+    {
+      "name": "Brand Visibility",
+      "folder": "brand_visibility",
+      "run_from_repository_root": "python -m streamlit run brand_visibility/app.py --server.port 8502"
+    },
+    {
+      "name": "Real Estate Investment Advisor",
+      "folder": "real_estate_investment_advisor",
+      "run_from_repository_root": "python -m streamlit run real_estate_investment_advisor/app.py --server.port 8503"
+    },
+    {
+      "name": "RecycleVision",
+      "folder": "recyclevision",
+      "run_from_repository_root": "python -m streamlit run recyclevision/app.py --server.port 8504"
+    }
+  ]
+}

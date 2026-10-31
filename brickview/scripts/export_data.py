@@ -1,8 +1,11 @@
-"""Export complete normalized tables to cleaned/ as CSV."""
+"""Export complete normalized tables to data/processed/ as CSV."""
+from pathlib import Path
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'src'))
 import csv
-from database import ROOT, TABLES, initialize, connect
+from brickview.database import ROOT, TABLES, initialize, connect
 initialize()
-output = ROOT / 'cleaned'
+output = ROOT / 'data/processed'
 output.mkdir(exist_ok=True)
 with connect() as con:
     for table in TABLES:
