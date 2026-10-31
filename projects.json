@@ -19,11 +19,6 @@
       "name": "RecycleVision",
       "folder": "recyclevision",
       "run_from_repository_root": "python -m streamlit run recyclevision/app.py --server.port 8504"
-    },
-    {
-      "name": "Audible Insights",
-      "folder": "audible_insights",
-      "run_from_repository_root": "python -m streamlit run audible_insights/app.py --server.port 8505"
     }
   ]
 }
